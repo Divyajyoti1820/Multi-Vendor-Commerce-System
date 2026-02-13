@@ -23,3 +23,7 @@ export default function RootLayout({
     </html>
   );
 }
+
+/***
+ * Very Important file, Go to this file and add your layout, header, footer, sidebar, etc. in this file. This file will be used in all pages.
+ */
