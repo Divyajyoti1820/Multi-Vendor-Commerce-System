@@ -1,5 +1,3 @@
-// Creating this component for Smartphones and tablets
-
 import Link from "next/link";
 
 import {
@@ -31,10 +29,10 @@ export const NavbarSidebar = ({ items, open, onOpenChange }: Props) => {
         <ScrollArea className="flex flex-col overflow-y-auto h-full pb-2">
           {items.map((item) => (
             <Link
+              onClick={() => onOpenChange(false)} //to close the sidebar when the concern page is rendered to stop hydration error
               key={item.href}
               href={item.href}
               className="w-full text-left p-4 hover:bg-black hover:text-white flex items-center text-base font-medium"
-              onClick={() => onOpenChange(false)} //to close the sidebar when the concern page is rendered to stop hydration error
             >
               {item.children}
             </Link>
