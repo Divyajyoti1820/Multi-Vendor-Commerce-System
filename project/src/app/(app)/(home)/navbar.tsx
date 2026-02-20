@@ -1,18 +1,19 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-/*
- In context with architecture of Next.js every component & page 
- by default is a server component(in gist the component can communicate with server and can fetch data, process and render it). To make change this default setting we have to put "use client"  on the first line of the component to make it a client component which can use hooks and other client based features.  
- */
+import { useState } from "react";
+import Link from "next/link";
+import { Poppins } from "next/font/google";
+import { usePathname } from "next/navigation";
+import { NavbarSidebar } from "./navbar-sidebar";
 
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 import { MenuIcon } from "lucide-react";
-import { Poppins } from "next/font/google";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useState } from "react";
-import { NavbarSidebar } from "./navbar-sidebar";
+
+/*
+In context with architecture of Next.js every component & page 
+by default is a server component(in gist the component can communicate with server and can fetch data, process and render it). To make change this default setting we have to put "use client"  on the first line of the component to make it a client component which can use hooks and other client based features.  
+*/
 
 const font = Poppins({
   subsets: ["latin"],
