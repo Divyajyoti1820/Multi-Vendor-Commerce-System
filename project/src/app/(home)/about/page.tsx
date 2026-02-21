@@ -1,3 +1,8 @@
+/**
+ * Renders the About page with a centered title.
+ *
+ * @returns A JSX element containing a full-size centered container with an h1 displaying "About us Page".
+ */
 export default function AboutPage() {
   return (
     <div className="flex-1 flex items-center justify-center">
