@@ -11,9 +11,15 @@ const MainFont = DM_Sans({
 export const metadata: Metadata = {
   title: "Ekādhāra",
   description:
-    "It is a platform where different vendors will create there e-commerce software.",
+    "It is a platform where different vendors will create their e-commerce software.",
 };
 
+/**
+ * Root layout component that renders the top-level HTML structure and provides tooltip context to descendants.
+ *
+ * @param children - The page content to render inside the layout; it will be wrapped by a TooltipProvider.
+ * @returns The root `<html lang="en">` element containing a `<body>` with the configured font and `antialiased` class, where `children` are wrapped by the TooltipProvider.
+ */
 export default function RootLayout({
   children,
 }: Readonly<{
