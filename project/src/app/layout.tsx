@@ -11,7 +11,7 @@ const MainFont = DM_Sans({
 export const metadata: Metadata = {
   title: "Ekādhāra",
   description:
-    "It is a platform where different vendors will create there e-commerce software.",
+    "It is a platform where different vendors will create their e-commerce software.",
 };
 
 export default function RootLayout({
