@@ -1,10 +1,10 @@
-import { Footer } from "./footer";
+import { getPayload } from "payload";
+import configPromise from "@payload-config";
+import { Category } from "@/payload-types";
+
 import { Navbar } from "./navbar";
 import { SearchFilters } from "./search-filters";
-
-import configPromise from "@payload-config";
-import { getPayload } from "payload";
-
+import { Footer } from "./footer";
 interface Props {
   children: React.ReactNode;
 }
@@ -20,7 +20,8 @@ export default async function HomeLayout({ children }: Props) {
 
   const data = await payload.find({
     collection: "categories",
-    depth: 1, //Depth is used to fetch the subcategories
+    depth: 1, //Populate subcategories, subcategories will be a type of "Category"
+    pagination: false,
     where: {
       // Fetching only top-level categories
       parent: {
@@ -29,10 +30,20 @@ export default async function HomeLayout({ children }: Props) {
     },
   });
 
+  // Transform the data to include subcategories in a more accessible format
+  const formattedData = data.docs.map((doc) => ({
+    ...doc,
+    subcategories: (doc.subcategories?.docs ?? []).map((doc) => ({
+      ...(doc as Category),
+    })),
+  }));
+
+  console.log("Formatted Categories with Subcategories:", formattedData);
+
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
-      <SearchFilters data={data} />
+      <SearchFilters data={formattedData} />
       <div className="flex-1 bg-[#F4F4F4]">{children}</div>
       <Footer />
     </div>
